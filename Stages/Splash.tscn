@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Sounds/retro.mp3" type="AudioStream" id=1]
+[ext_resource path="res://font.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="GDScript" id=130]
+script/source = "extends Node2D
+
+func _on_AudioStreamPlayer_finished():
+	get_tree().change_scene(\"res://Stages/Title.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=128]
+size = 32
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=129]
+default_font = SubResource( 128 )
+
+[node name="Node2D" type="Node2D"]
+script = SubResource( 130 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 424.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 84.0
+margin_top = 104.0
+margin_right = 344.0
+margin_bottom = 126.0
+theme = SubResource( 129 )
+custom_colors/font_color = Color( 0.372549, 0.803922, 0.894118, 1 )
+text = "rising retro 2022"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sprites/motobug.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+export var dir = -1
+var state = 'idle'
+
+
+func _process(delta):
+	match state:
+		'move':
+			move(delta)
+
+func move(delta):
+	if $AnimatedSprite.animation != 'default':
+		$AnimatedSprite.animation = 'default'
+	if dir>0:
+		$AnimatedSprite.flip_h = true
+	else:
+		$AnimatedSprite.flip_h = false
+	global_position.x += dir*64*delta
+
+func _on_CrabMeat_body_entered(body):
+	if state == 'move':
+		if body.collision_layer == 2:
+			if body.sprite == 'jump':
+				var eb = preload(\"res://Scenes/E_Blast.tscn\").instance()
+				eb.global_position = global_position
+				eb.playing = true
+				owner.add_child(eb)
+				body.vel.y = -100
+				queue_free()
+			else:
+				body.die(global_position)
+		else:
+			dir = -dir
+
+func _on_Area2D_body_entered(body):
+	$AnimatedSprite.playing = true
+	state = 'move'
+	$Area2D.queue_free()
+"
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 39, 29 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 39, 0, 39, 29 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 78, 0, 39, 29 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 117, 0, 39, 29 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 24, 16 )
+
+[node name="Motobug" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 13 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[connection signal="body_entered" from="." to="." method="_on_CrabMeat_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

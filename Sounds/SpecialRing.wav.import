@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SpecialRing.wav-8346226de9880dfbc091a833442736de.sample"
+
+[deps]
+
+source_file="res://Sounds/SpecialRing.wav"
+dest_files=[ "res://.import/SpecialRing.wav-8346226de9880dfbc091a833442736de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

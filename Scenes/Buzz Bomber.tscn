@@ -1,0 +1,234 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://Sprites/buzz-bomber.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/buzz-bomb.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/buzz-wings.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/leon-jet.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+export var dir = 1
+export var state = 'idle'
+var cooldown = 0
+
+func _ready():
+	if dir == 1:
+		$AnimatedSprite.flip_h = true
+		$Jet.flip_h = false
+		$Wings.position.x = -$Wings.position.x
+		$Bomb.position.x = -$Bomb.position.x
+		$Jet.position.x = -$Jet.position.x
+
+func _process(delta):
+	match state:
+		'move':
+			$Bomb.frame = 0
+			$AnimatedSprite.animation = 'default'
+			global_position.x += dir*128*delta
+			$Jet.visible = true
+			if cooldown != 0:
+				cooldown -= delta
+		'shoot':
+			$AnimatedSprite.animation = 'shoot'
+			$Jet.visible = false
+
+func _on_Buzz_Bomber_body_entered(body):
+	if body.sprite == 'jump':
+		var eb = preload(\"res://Scenes/E_Blast.tscn\").instance()
+		eb.global_position = global_position
+		eb.playing = true
+		owner.add_child(eb)
+		body.vel.y = -100
+		queue_free()
+	else:
+		body.die(global_position)
+
+func _on_Move_Area_body_entered(body):
+	state = 'move'
+	$\"Move Area\".queue_free()
+
+func _on_Shoot_Area_body_entered(body):
+	if cooldown == 0:
+		state = 'shoot'
+
+func _on_AnimatedSprite_animation_finished():
+	if state == 'shoot':
+		$Bomb.play()
+
+func _on_Bomb_animation_finished():
+	var mb = preload(\"res://Scenes/MeatBall.tscn\").instance()
+	mb.color = 'yellow'
+	mb.dir = Vector2(dir,1)
+	mb.global_position = Vector2(global_position.x + (24*dir), global_position.y + 24)
+	owner.add_child(mb)
+	state = 'move'
+	cooldown = 3
+"
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 37, 10 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 10, 37, 10 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 20, 37, 10 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 32, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 32, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 48, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 64, 48, 32 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": false,
+"name": "shoot",
+"speed": 15.0
+} ]
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 22, 18 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 22, 0, 22, 18 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 44, 0, 22, 18 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 18, 22, 18 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 22, 18, 22, 18 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 44, 18, 22, 18 )
+
+[sub_resource type="SpriteFrames" id=22]
+animations = [ {
+"frames": [ null, SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 27, 12 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 27, 0, 27, 12 )
+
+[sub_resource type="SpriteFrames" id=25]
+animations = [ {
+"frames": [ SubResource( 23 ), SubResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 24, 8 )
+
+[node name="Buzz Bomber" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="Wings" type="AnimatedSprite" parent="."]
+position = Vector2( -1, -9 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 15 )
+playing = true
+
+[node name="Bomb" type="AnimatedSprite" parent="."]
+position = Vector2( -24, 22 )
+frames = SubResource( 22 )
+
+[node name="Jet" type="AnimatedSprite" parent="."]
+position = Vector2( 26.5, 5.5 )
+frames = SubResource( 25 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 26 )
+
+[node name="Move Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Move Area"]
+
+[node name="Shoot Area" type="Area2D" parent="."]
+position = Vector2( -64, 56 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shoot Area"]
+
+[connection signal="body_entered" from="." to="." method="_on_Buzz_Bomber_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="Bomb" to="." method="_on_Bomb_animation_finished"]
+[connection signal="body_entered" from="Move Area" to="." method="_on_Move_Area_body_entered"]
+[connection signal="body_entered" from="Shoot Area" to="." method="_on_Shoot_Area_body_entered"]

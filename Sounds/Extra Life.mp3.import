@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Extra Life.mp3-7c764e41eba2cfbb044fccf4b833649d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Extra Life.mp3"
+dest_files=[ "res://.import/Extra Life.mp3-7c764e41eba2cfbb044fccf4b833649d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

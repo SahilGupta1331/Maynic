@@ -1,0 +1,1551 @@
+[gd_scene load_steps=103 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/back1/back.tres" type="Texture" id=2]
+[ext_resource path="res://Sprites/back1/back3.png" type="Texture" id=3]
+[ext_resource path="res://Tiles/s2/png/Level_0.png" type="Texture" id=4]
+[ext_resource path="res://Sounds/back.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Ring.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Platform-1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/spikes.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/RotorSpike.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sprites/flower.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/tree.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/CrabMeat.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Rock.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Item Box.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Leon.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Sprites/waves/waves.tres" type="Texture" id=16]
+[ext_resource path="res://Scenes/Chopper.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Sprites/bush.png" type="Texture" id=18]
+[ext_resource path="res://Scenes/Motobug.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scenes/Platform-2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Sprites/chozo-statue.png" type="Texture" id=21]
+[ext_resource path="res://Scenes/Door.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Scenes/Spring.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Scenes/Platform-3.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Sprites/spin-loop.png" type="Texture" id=25]
+[ext_resource path="res://Scenes/Buzz Bomber.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Sprites/balls.png" type="Texture" id=27]
+[ext_resource path="res://Shapes/bridge-load.tres" type="Shape2D" id=28]
+[ext_resource path="res://Sprites/Platform-1.png" type="Texture" id=29]
+[ext_resource path="res://tiles.png" type="Texture" id=30]
+[ext_resource path="res://Scenes/CheckPoint.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Sprites/ring-flash.png" type="Texture" id=32]
+[ext_resource path="res://Sounds/SpecialRing.wav" type="AudioStream" id=33]
+[ext_resource path="res://Anims/Fade.tres" type="Animation" id=34]
+[ext_resource path="res://Theme.tres" type="Theme" id=35]
+
+[sub_resource type="GDScript" id=29]
+script/source = "extends Node2D
+
+func _ready():
+	main.timer = true
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == 'Fade':
+		get_tree().change_scene(\"res://Stages/Splash.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 16, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 160, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 10 )
+region = Rect2( 224, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 10 )
+region = Rect2( 256, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 10 )
+region = Rect2( 288, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 10 )
+region = Rect2( 320, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 10 )
+region = Rect2( 352, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 10 )
+region = Rect2( 384, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 416, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 10 )
+region = Rect2( 448, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
+region = Rect2( 480, 0, 32, 64 )
+
+[sub_resource type="SpriteFrames" id=21]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="GDScript" id=43]
+script/source = "extends Area2D
+
+func _on_Area2D_body_entered(body):
+	if body.rolling:
+		body.vel /= 2
+		var eb = preload(\"res://Scenes/E_Blast.tscn\").instance()
+		eb.global_position = global_position
+		eb.get_node(\"AudioStreamPlayer2D\").stream = preload(\"res://Sounds/Roll.wav\")
+		eb.play()
+		owner.add_child(eb)
+		body.rolling = true
+		queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 16, 24 )
+
+[sub_resource type="RectangleShape2D" id=42]
+extents = Vector2( 32, 24 )
+
+[sub_resource type="RectangleShape2D" id=44]
+extents = Vector2( 24, 16 )
+
+[sub_resource type="GDScript" id=22]
+script/source = "extends Area2D
+
+func _on_Area2D2_area_entered(area):
+	area.dir = -area.dir
+
+func _on_Area2D_area_entered(area):
+	area.dir = -area.dir
+"
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 0.5, 5 )
+
+[sub_resource type="RectangleShape2D" id=32]
+extents = Vector2( 24, 6.5 )
+
+[sub_resource type="GDScript" id=38]
+script/source = "extends Area2D
+
+func _ready():
+	if owner.get_node('Player').global_position.x < global_position.x and owner.get_node('Player').global_position.y < global_position.y:
+		$StaticBody2D3.collision_layer = int(!bool($StaticBody2D3.collision_layer))
+		$StaticBody2D2.collision_layer = int(!bool($StaticBody2D2.collision_layer))
+
+func _on_Loop_body_entered(body):
+	$StaticBody2D3.collision_layer = int(!bool($StaticBody2D3.collision_layer))
+	$StaticBody2D2.collision_layer = int(!bool($StaticBody2D2.collision_layer))
+"
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 10, 33 )
+
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 4, 104 )
+
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 1, 50 )
+
+[sub_resource type="RectangleShape2D" id=34]
+extents = Vector2( 0.5, 48 )
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 72, 5 )
+
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 4.125, 92 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+func _on_Spikes_body_entered(body):
+	body.die(Vector2(body.global_position.x,body.global_position.y+48))
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 128, 16 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 80, 15 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 120, 8 )
+
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 128, 15.5 )
+
+[sub_resource type="GDScript" id=27]
+script/source = "extends Area2D
+
+func _on_Area2D_body_entered(body):
+	body.ACC /= 2 
+
+func _on_Area2D_body_exited(body):
+	body.ACC *= 2
+"
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 120, 62.5 )
+
+[sub_resource type="GDScript" id=46]
+script/source = "extends Area2D
+
+func _on_Area2D2_body_entered(body):
+	get_parent().get_node(\"cage\").collision_layer = 1
+	var egg = preload(\"res://Scenes/Eggman.tscn\").instance()
+	egg.global_position = Vector2(384,-776)
+	owner.get_node('AudioStreamPlayer').stream = preload(\"res://Sounds/boss.mp3\")
+	owner.get_node('AudioStreamPlayer').play()
+	body.get_node('AnimatedSprite').animation = 'up'
+	body.global_position.y = -728
+	owner.add_child(egg)
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id=45]
+extents = Vector2( 8, 160 )
+
+[sub_resource type="RectangleShape2D" id=47]
+extents = Vector2( 8, 200 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "New Anim"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Platform/Platform_1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8, 16 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -104 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Platform/Platform:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 632, -480 ), Vector2( 632, -576 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Platform/Platform2:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 700, -480 ), Vector2( 700, -368 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Platform/Platform_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Platform/Platform:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 632, -512 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Platform/Platform2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 700, -512 ) ]
+}
+
+[sub_resource type="GDScript" id=144]
+script/source = "extends Area2D
+
+func _process(delta):
+	if $Screen:
+		$Screen.texture = $Viewport.get_texture()
+
+func _on_Level1_body_entered(body):
+	$Screen.queue_free()
+	$Viewport.queue_free()
+	body.queue_free()
+	$AudioStreamPlayer2D.play()
+	$AnimatedSprite.play()
+
+func _on_AnimatedSprite_animation_finished():
+	$AudioStreamPlayer2D.stream = preload(\"res://Sounds/SpecialWarp.wav\")
+	$AudioStreamPlayer2D.play()
+	owner.get_node('AnimationPlayer').play('Fade')
+	queue_free()
+"
+
+[sub_resource type="AtlasTexture" id=129]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 0, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=130]
+atlas = ExtResource( 32 )
+region = Rect2( 72, 0, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=131]
+atlas = ExtResource( 32 )
+region = Rect2( 144, 0, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=132]
+atlas = ExtResource( 32 )
+region = Rect2( 216, 0, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=133]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 72, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=134]
+atlas = ExtResource( 32 )
+region = Rect2( 72, 72, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=135]
+atlas = ExtResource( 32 )
+region = Rect2( 144, 72, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=136]
+atlas = ExtResource( 32 )
+region = Rect2( 216, 72, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=137]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 144, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=138]
+atlas = ExtResource( 32 )
+region = Rect2( 72, 144, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=139]
+atlas = ExtResource( 32 )
+region = Rect2( 144, 144, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=140]
+atlas = ExtResource( 32 )
+region = Rect2( 216, 144, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=141]
+atlas = ExtResource( 32 )
+region = Rect2( 0, 216, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=142]
+atlas = ExtResource( 32 )
+region = Rect2( 72, 216, 72, 72 )
+
+[sub_resource type="AtlasTexture" id=143]
+atlas = ExtResource( 32 )
+region = Rect2( 144, 216, 72, 72 )
+
+[sub_resource type="SpriteFrames" id=145]
+animations = [ {
+"frames": [ null, SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ), SubResource( 140 ), SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), null ],
+"loop": false,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="SpatialMaterial" id=146]
+albedo_color = Color( 0.968627, 1, 0, 1 )
+emission_enabled = true
+emission = Color( 0.945098, 1, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Animation" id=147]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGTorus:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -360, -360, -360 ) ]
+}
+
+[sub_resource type="Animation" id=148]
+resource_name = "rotate"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGTorus:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 360 ), Vector3( 0, 0, 0 ), Vector3( 0, -180, -360 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=149]
+radius = 40.0
+
+[node name="World" type="Node2D"]
+script = SubResource( 29 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -736.0, -704.0, -880.0 ],
+"_edit_vertical_guides_": [ -2483.0, 360.0, 360.0, 274.0 ]
+}
+
+[node name="Objects" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Motobug" parent="Objects" instance=ExtResource( 19 )]
+position = Vector2( 305, -224 )
+
+[node name="AnimatedSprite" parent="Objects/Motobug" index="0"]
+frame = 3
+
+[node name="Area2D" parent="Objects/Motobug" index="2"]
+position = Vector2( -64, 0 )
+
+[node name="CollisionShape2D" parent="Objects/Motobug/Area2D" index="0"]
+position = Vector2( 0, -16 )
+shape = SubResource( 30 )
+
+[node name="Item Box" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 290, -114 )
+
+[node name="Item Box2" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( -144, -272 )
+power = "life"
+
+[node name="Item Box3" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( -72, -464 )
+power = "life"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Objects"]
+position = Vector2( -56, -60 )
+frames = SubResource( 21 )
+frame = 4
+playing = true
+
+[node name="Tree" type="Sprite" parent="Objects"]
+position = Vector2( 288, -48 )
+texture = ExtResource( 11 )
+
+[node name="TextureRect2" type="TextureRect" parent="Objects"]
+margin_left = 408.0
+margin_top = 16.0
+margin_right = 632.0
+margin_bottom = 48.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="Rock" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 616, 32 )
+
+[node name="Rock2" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 520, 32 )
+
+[node name="Rock3" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 424, 32 )
+
+[node name="Bush" type="Sprite" parent="Objects"]
+position = Vector2( 304, -224 )
+texture = ExtResource( 18 )
+
+[node name="Chozo-statue" type="Sprite" parent="Objects"]
+position = Vector2( 344, -360 )
+texture = ExtResource( 21 )
+
+[node name="Door" parent="Objects" instance=ExtResource( 22 )]
+position = Vector2( -96, -200 )
+
+[node name="Door" parent="Objects/Door" index="0"]
+position = Vector2( 360, -144 )
+
+[node name="Rotor-spikes" type="Node2D" parent="Objects"]
+position = Vector2( 488, -320 )
+
+[node name="Spike" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -112, 0 )
+
+[node name="Spike2" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -96, 0 )
+frame = 1
+
+[node name="Spike3" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -80, 0 )
+frame = 2
+
+[node name="Spike4" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -64, 0 )
+frame = 3
+
+[node name="Spike5" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -48, 0 )
+frame = 4
+
+[node name="Spike6" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -32, 0 )
+frame = 5
+
+[node name="Spike7" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( -16, 0 )
+frame = 6
+
+[node name="Spike8" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+frame = 7
+
+[node name="Spike9" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 16, 0 )
+frame = 8
+
+[node name="Spike10" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 32, 0 )
+frame = 9
+
+[node name="Spike11" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 48, 0 )
+frame = 10
+
+[node name="Spike12" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 64, 0 )
+frame = 11
+
+[node name="Spike13" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 80, 0 )
+frame = 12
+
+[node name="Spike14" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 96, 0 )
+frame = 13
+
+[node name="Spike15" parent="Objects/Rotor-spikes" instance=ExtResource( 9 )]
+position = Vector2( 112, 0 )
+frame = 14
+
+[node name="Spring" parent="Objects" instance=ExtResource( 23 )]
+position = Vector2( 504, -632 )
+rotation = -3.14159
+dir = Vector2( 0, 1 )
+
+[node name="CheckPoint" parent="Objects" instance=ExtResource( 31 )]
+position = Vector2( 16, -640 )
+
+[node name="Tiles" type="StaticBody2D" parent="."]
+position = Vector2( 480, 88 )
+
+[node name="Sprite" type="Sprite" parent="Tiles"]
+position = Vector2( -192, -592 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Tiles"]
+position = Vector2( -440, -608 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Area2D"]
+position = Vector2( 16, 0 )
+shape = SubResource( 41 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tiles/Area2D"]
+
+[node name="Platform-1" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( -24, 0 )
+texture = ExtResource( 29 )
+vframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( -24, 0 )
+shape = SubResource( 42 )
+
+[node name="Sprite" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+texture = ExtResource( 30 )
+hframes = 16
+vframes = 22
+frame = 58
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( 0, -16 )
+texture = ExtResource( 30 )
+hframes = 16
+vframes = 22
+frame = 58
+
+[node name="Sprite3" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( 0, 16 )
+texture = ExtResource( 30 )
+hframes = 16
+vframes = 22
+frame = 58
+
+[node name="Sprite4" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( -48, 16 )
+texture = ExtResource( 30 )
+flip_h = true
+hframes = 16
+vframes = 22
+frame = 58
+
+[node name="Sprite5" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( -48, 0 )
+texture = ExtResource( 30 )
+flip_h = true
+hframes = 16
+vframes = 22
+frame = 58
+
+[node name="Sprite6" type="Sprite" parent="Tiles/Area2D/StaticBody2D"]
+position = Vector2( -48, -16 )
+texture = ExtResource( 30 )
+flip_h = true
+hframes = 16
+vframes = 22
+frame = 58
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles"]
+position = Vector2( -192, -592 )
+polygon = PoolVector2Array( -448, 56, -304, 56, -304, 8, -240, 8, -240, 64, -80, 64, -80, 8, 160, 8, 169, 8, 180, 6, 194, 1, 207, -6, 218, -15, 226, -24, 234, -40, 240, -56, 240, -72, 304, -72, 304, 72, -16, 72, -16, 136, -448, 136, -448, 312, -368, 312, -368, 208, -304, 208, -304, 312, -64, 312, -64, 296, 80, 296, 80, 416, 320, 416, 320, 280, 384, 280, 384, 472, 48, 472, 48, 344, -48, 344, -48, 360, -448, 360, -448, 480, -288, 480, -288, 600, -464, 600, -464, -600, -448, -600 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Tiles"]
+position = Vector2( -192, -592 )
+polygon = PoolVector2Array( 464, 600, -32, 600, -32, 552, 416, 552, 416, 232, 320, 232, 320, 170, 320, 170, 448, 170, 448, -136, 192, -136, 100, -160, 84, -165, 73, -167, 55, -167, 44, -165, -48, -152, -128, -152, -128, -200, 448, -200, 448, -600, 464, -600 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Tiles"]
+position = Vector2( -192, -592 )
+polygon = PoolVector2Array( 80, 232, -64, 232, -64, 184, 32, 184, 32, 170, 80, 170, 80, 170 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Tiles"]
+position = Vector2( -192, -592 )
+polygon = PoolVector2Array( -304, -112, -304, -40, -240, -40, -240, -112 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles"]
+position = Vector2( -616, -648 )
+shape = SubResource( 44 )
+one_way_collision = true
+one_way_collision_margin = 2.0
+
+[node name="Spring2" parent="." instance=ExtResource( 23 )]
+position = Vector2( -136, -456 )
+power = 200
+
+[node name="Platform" type="Node" parent="."]
+
+[node name="Platform_1" type="Node2D" parent="Platform"]
+
+[node name="Area2D" type="Area2D" parent="Platform/Platform_1"]
+position = Vector2( 80, 0 )
+collision_layer = 0
+collision_mask = 4
+script = SubResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform_1/Area2D"]
+position = Vector2( -40, 0 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform_1/Area2D"]
+position = Vector2( 40, 0 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform/Platform_1/Area2D"]
+position = Vector2( 70, 0 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platform/Platform_1/Area2D"]
+position = Vector2( 150, 0 )
+shape = SubResource( 23 )
+
+[node name="CrabMeat" parent="Platform/Platform_1" instance=ExtResource( 12 )]
+position = Vector2( 80, 0 )
+
+[node name="CrabMeat2" parent="Platform/Platform_1" instance=ExtResource( 12 )]
+position = Vector2( 190, 0 )
+
+[node name="Platform" parent="Platform/Platform_1" instance=ExtResource( 7 )]
+position = Vector2( 80, 96.0372 )
+
+[node name="Platform2" parent="Platform/Platform_1" instance=ExtResource( 7 )]
+position = Vector2( 192, 96 )
+
+[node name="Node2D" parent="Platform" instance=ExtResource( 20 )]
+position = Vector2( 104, -288 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
+position = Vector2( -136, -248 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D"]
+position = Vector2( 0, -1.5 )
+shape = SubResource( 32 )
+one_way_collision = true
+one_way_collision_margin = 2.0
+
+[node name="Platform" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 632, -512 )
+
+[node name="Platform3" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 104, -656 )
+
+[node name="Platform4" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 224, -768 )
+
+[node name="Platform6" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 544, -768 )
+
+[node name="Platform7" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 496, -848 )
+
+[node name="Platform5" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 272, -848 )
+
+[node name="Platform2" parent="Platform" instance=ExtResource( 24 )]
+position = Vector2( 700, -512 )
+
+[node name="Loop" type="Area2D" parent="Platform"]
+position = Vector2( 387, -584 )
+script = SubResource( 38 )
+
+[node name="loop-fg" type="Sprite" parent="Platform/Loop"]
+texture = ExtResource( 25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform/Loop"]
+
+[node name="loop" type="CollisionPolygon2D" parent="Platform/Loop/StaticBody2D"]
+polygon = PoolVector2Array( -103, 36, -111, 20, -115, 0, -114, -24, -107, -44, -99, -57, -90, -67, -79, -76, -59, -85, -43, -88, -35, -88, -27, -88, -3, -82, 16, -71, 32, -52, 93, -52, 93, -104, -163, -104, -163, -56, -147, -40, -147, 40 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Platform/Loop"]
+
+[node name="loop2" type="CollisionPolygon2D" parent="Platform/Loop/StaticBody2D2"]
+polygon = PoolVector2Array( -115, 71, -115, 88, 15, 88, -7, 85, -26, 81, -40, 78, -57, 73, -71, 66, -85, 56, -97, 44, -103, 36, -147, 40 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Platform/Loop"]
+collision_layer = 0
+
+[node name="loop3" type="CollisionPolygon2D" parent="Platform/Loop/StaticBody2D3"]
+polygon = PoolVector2Array( 32, -52, 39, -39, 44, -22, 45, -8, 45, 2, 41, 19, 36, 30, 28, 42, 18, 52, 6, 63, -11, 72, -29, 78, -49, 83, -83, 88, 28, 88, 93, 23, 93, -52 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Loop"]
+position = Vector2( -35, -55 )
+shape = SubResource( 37 )
+
+[node name="Node2D2" type="Node2D" parent="Platform"]
+position = Vector2( 56, -488 )
+
+[node name="bridge-load" type="StaticBody2D" parent="Platform/Node2D2"]
+position = Vector2( -16, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/bridge-load"]
+shape = SubResource( 40 )
+
+[node name="PinJoint2D11" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( -8, 0 )
+node_a = NodePath("../bridge-load")
+node_b = NodePath("../RigidBody2D")
+disable_collision = false
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Platform/Node2D2"]
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 8, 0 )
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../RigidBody2D2")
+disable_collision = false
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 16, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D2"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D2"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 24, 0 )
+node_a = NodePath("../RigidBody2D2")
+node_b = NodePath("../RigidBody2D3")
+disable_collision = false
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 32, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D3"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D3"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D6" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 40, 0 )
+node_a = NodePath("../RigidBody2D3")
+node_b = NodePath("../RigidBody2D4")
+disable_collision = false
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 48, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D4"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D4"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D7" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 56, 0 )
+node_a = NodePath("../RigidBody2D4")
+node_b = NodePath("../RigidBody2D5")
+disable_collision = false
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 64, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D5"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D5"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 72, 0 )
+node_a = NodePath("../RigidBody2D5")
+node_b = NodePath("../RigidBody2D6")
+disable_collision = false
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 80, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D6"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D6"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D8" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 88, 0 )
+node_a = NodePath("../RigidBody2D6")
+node_b = NodePath("../RigidBody2D7")
+disable_collision = false
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 96, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D7"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D7"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 104, 0 )
+node_a = NodePath("../RigidBody2D7")
+node_b = NodePath("../RigidBody2D8")
+disable_collision = false
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 112, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D8"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D8"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 120, 0 )
+node_a = NodePath("../RigidBody2D8")
+node_b = NodePath("../RigidBody2D9")
+disable_collision = false
+
+[node name="RigidBody2D9" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 128, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D9"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D9"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 136, 0 )
+node_a = NodePath("../RigidBody2D9")
+node_b = NodePath("../RigidBody2D10")
+disable_collision = false
+
+[node name="RigidBody2D10" type="RigidBody2D" parent="Platform/Node2D2"]
+position = Vector2( 144, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D2/RigidBody2D10"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/RigidBody2D10"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D10" type="PinJoint2D" parent="Platform/Node2D2"]
+position = Vector2( 152, 0 )
+node_a = NodePath("../RigidBody2D10")
+node_b = NodePath("../bridge-load2")
+disable_collision = false
+
+[node name="bridge-load2" type="StaticBody2D" parent="Platform/Node2D2"]
+position = Vector2( 160, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D2/bridge-load2"]
+shape = SubResource( 40 )
+
+[node name="Node2D3" type="Node2D" parent="Platform"]
+position = Vector2( -104, -568 )
+
+[node name="bridge-load" type="StaticBody2D" parent="Platform/Node2D3"]
+position = Vector2( -16, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/bridge-load"]
+shape = SubResource( 40 )
+one_way_collision = true
+
+[node name="PinJoint2D11" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( -8, 0 )
+node_a = NodePath("../bridge-load")
+node_b = NodePath("../RigidBody2D")
+disable_collision = false
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Platform/Node2D3"]
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D3/RigidBody2D"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/RigidBody2D"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( 8, 0 )
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../RigidBody2D2")
+disable_collision = false
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="Platform/Node2D3"]
+position = Vector2( 16, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D3/RigidBody2D2"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/RigidBody2D2"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( 24, 0 )
+node_a = NodePath("../RigidBody2D2")
+node_b = NodePath("../RigidBody2D7")
+disable_collision = false
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="Platform/Node2D3"]
+position = Vector2( 32, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D3/RigidBody2D7"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/RigidBody2D7"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( 40, 0 )
+node_a = NodePath("../RigidBody2D7")
+node_b = NodePath("../RigidBody2D8")
+disable_collision = false
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="Platform/Node2D3"]
+position = Vector2( 48, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D3/RigidBody2D8"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/RigidBody2D8"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D9" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( 56, 0 )
+node_a = NodePath("../RigidBody2D8")
+node_b = NodePath("../RigidBody2D9")
+disable_collision = false
+
+[node name="RigidBody2D9" type="RigidBody2D" parent="Platform/Node2D3"]
+position = Vector2( 64, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D3/RigidBody2D9"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/RigidBody2D9"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( 72, 0 )
+node_a = NodePath("../RigidBody2D9")
+node_b = NodePath("../RigidBody2D10")
+disable_collision = false
+
+[node name="RigidBody2D10" type="RigidBody2D" parent="Platform/Node2D3"]
+position = Vector2( 80, 0 )
+
+[node name="Sprite" type="Sprite" parent="Platform/Node2D3/RigidBody2D10"]
+texture = ExtResource( 27 )
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/RigidBody2D10"]
+shape = ExtResource( 28 )
+
+[node name="PinJoint2D10" type="PinJoint2D" parent="Platform/Node2D3"]
+position = Vector2( 88, 0 )
+node_a = NodePath("../RigidBody2D10")
+node_b = NodePath("../bridge-load2")
+disable_collision = false
+
+[node name="bridge-load2" type="StaticBody2D" parent="Platform/Node2D3"]
+position = Vector2( 96, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Node2D3/bridge-load2"]
+shape = SubResource( 40 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -120, -80 )
+
+[node name="AnimatedSprite" parent="Player" index="0"]
+animation = "die"
+frame = 0
+
+[node name="RemoteTransform2D" parent="Player" index="2"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -120, -80 )
+z_index = 5
+current = true
+limit_left = -160
+limit_right = 736
+limit_bottom = 80
+
+[node name="ColorRect2" type="ColorRect" parent="Camera2D"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -384.0
+margin_top = -165.0
+margin_right = 213.0
+margin_bottom = 163.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.3 )
+motion_mirroring = Vector2( 641, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -320, -165 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 320, -165 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 0.3 )
+motion_mirroring = Vector2( 641, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -320, -56.5 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 320, -56.5 )
+texture = ExtResource( 2 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Leon" parent="Enemies" instance=ExtResource( 15 )]
+position = Vector2( 384, 32 )
+
+[node name="Area2D" parent="Enemies/Leon" index="3"]
+position = Vector2( -96, -32 )
+
+[node name="CollisionShape2D" parent="Enemies/Leon/Area2D" index="0"]
+position = Vector2( 32, -56 )
+shape = SubResource( 26 )
+
+[node name="Chopper" parent="Enemies" instance=ExtResource( 17 )]
+position = Vector2( 488, -105 )
+
+[node name="Chopper2" parent="Enemies" instance=ExtResource( 17 )]
+position = Vector2( 448, -136 )
+
+[node name="Buzz Bomber" parent="Enemies" instance=ExtResource( 26 )]
+position = Vector2( 696, -416 )
+dir = -1
+
+[node name="Wings" parent="Enemies/Buzz Bomber" index="0"]
+frame = 1
+
+[node name="CollisionShape2D" parent="Enemies/Buzz Bomber/Move Area" index="0"]
+position = Vector2( -327, 34 )
+shape = SubResource( 33 )
+
+[node name="CollisionShape2D" parent="Enemies/Buzz Bomber/Shoot Area" index="0"]
+position = Vector2( 0, -24 )
+shape = SubResource( 34 )
+
+[node name="Buzz Bomber2" parent="Enemies" instance=ExtResource( 26 )]
+position = Vector2( 816, -580 )
+dir = -1
+
+[node name="Wings" parent="Enemies/Buzz Bomber2" index="0"]
+frame = 1
+
+[node name="Jet" parent="Enemies/Buzz Bomber2" index="3"]
+frame = 0
+
+[node name="Move Area" parent="Enemies/Buzz Bomber2" index="5"]
+position = Vector2( -56, 16 )
+
+[node name="CollisionShape2D" parent="Enemies/Buzz Bomber2/Move Area" index="0"]
+position = Vector2( -96, 56 )
+shape = SubResource( 35 )
+
+[node name="CollisionShape2D" parent="Enemies/Buzz Bomber2/Shoot Area" index="0"]
+position = Vector2( -3.875, -24 )
+shape = SubResource( 36 )
+
+[node name="Area2D2" type="Area2D" parent="Enemies"]
+position = Vector2( 296, -216 )
+collision_layer = 0
+collision_mask = 4
+script = SubResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Area2D2"]
+position = Vector2( -64, 0 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Enemies/Area2D2"]
+position = Vector2( -248, -232 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Enemies/Area2D2"]
+position = Vector2( -88, -232 )
+shape = SubResource( 23 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemies/Area2D2"]
+position = Vector2( 64, 0 )
+shape = SubResource( 23 )
+
+[node name="CrabMeat" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 184, -456 )
+
+[node name="CrabMeat2" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 128, -456 )
+
+[node name="CrabMeat3" parent="Enemies" instance=ExtResource( 12 )]
+position = Vector2( 72, -456 )
+dir = -1
+
+[node name="Areas" type="Node" parent="."]
+
+[node name="Spikes" type="Area2D" parent="Areas"]
+position = Vector2( 128, 72 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Spikes"]
+position = Vector2( 0, -8 )
+shape = SubResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Areas/Spikes"]
+margin_left = -128.0
+margin_top = -24.0
+margin_right = 128.0
+margin_bottom = 8.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Areas/Spikes"]
+margin_left = -144.0
+margin_top = -280.0
+margin_right = 96.0
+margin_bottom = -264.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Areas/Spikes"]
+position = Vector2( 392, -40 )
+shape = SubResource( 24 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Areas/Spikes"]
+position = Vector2( -24, -272 )
+shape = SubResource( 31 )
+
+[node name="Spring" parent="Areas" instance=ExtResource( 23 )]
+position = Vector2( 688, 40 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Areas"]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Areas/StaticBody2D"]
+position = Vector2( 128, 64.5 )
+shape = SubResource( 25 )
+
+[node name="Area2D" type="Area2D" parent="Areas"]
+position = Vector2( 368, -192 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D"]
+position = Vector2( 120, 65.5 )
+shape = SubResource( 28 )
+
+[node name="TextureRect" type="TextureRect" parent="Areas/Area2D"]
+modulate = Color( 0, 0.811765, 1, 0.729412 )
+margin_right = 240.0
+margin_bottom = 14.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Areas/Area2D/TextureRect"]
+margin_top = 14.0
+margin_right = 240.0
+margin_bottom = 128.0
+color = Color( 0.156863, 0.12549, 0.156863, 1 )
+
+[node name="Area2D2" type="Area2D" parent="Areas"]
+position = Vector2( 176, -768 )
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 46 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Area2D2"]
+position = Vector2( 208, -96 )
+shape = SubResource( 45 )
+
+[node name="cage" type="StaticBody2D" parent="Areas"]
+position = Vector2( 384, -768 )
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/cage"]
+position = Vector2( -216, -136 )
+shape = SubResource( 47 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Areas/cage"]
+position = Vector2( 216, -136 )
+shape = SubResource( 47 )
+
+[node name="Rings" type="Node" parent="."]
+
+[node name="Ring" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 104, -128 )
+
+[node name="Ring2" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 152, -128 )
+
+[node name="Ring3" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 408, 0 )
+
+[node name="Ring4" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 440, 0 )
+
+[node name="Ring5" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 504, 0 )
+
+[node name="Ring6" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 536, 0 )
+
+[node name="Ring7" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 600, 0 )
+
+[node name="Ring8" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 632, 0 )
+
+[node name="Ring9" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 104, -248 )
+
+[node name="Ring10" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 168, -320 )
+
+[node name="Ring11" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 40, -320 )
+
+[node name="Ring12" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 48, -288 )
+
+[node name="Ring14" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 160, -288 )
+
+[node name="Ring15" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 136, -264 )
+
+[node name="Ring13" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 72, -264 )
+
+[node name="Ring16" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( -128, -208 )
+
+[node name="Ring17" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( -148, -208 )
+
+[node name="Ring18" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 488, -528 )
+
+[node name="Ring19" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 448, -512 )
+
+[node name="Ring20" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 352, -520 )
+
+[node name="Ring21" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 320, -536 )
+
+[node name="Ring22" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 290, -568 )
+
+[node name="Ring23" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 288, -608 )
+
+[node name="Ring24" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 312, -640 )
+
+[node name="Ring25" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 352, -656 )
+
+[node name="Ring26" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 392, -640 )
+
+[node name="Ring27" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 416, -608 )
+
+[node name="Ring28" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 416, -568 )
+
+[node name="Ring29" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 387, -536 )
+
+[node name="Ring30" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 306, -512 )
+
+[node name="Ring31" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 256, -512 )
+
+[node name="Ring32" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 216, -512 )
+
+[node name="Ring33" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 88, -688 )
+
+[node name="Ring35" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( 120, -688 )
+
+[node name="Ring34" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( -96, -592 )
+rotation = -0.000311544
+
+[node name="Ring36" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( -64, -592 )
+
+[node name="Ring38" parent="Rings" instance=ExtResource( 6 )]
+position = Vector2( -32, -592 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "New Anim"
+anims/Fade = ExtResource( 34 )
+"anims/New Anim" = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Portal" type="Area2D" parent="."]
+visible = false
+position = Vector2( 688, -768 )
+z_index = 1
+collision_layer = 0
+collision_mask = 2
+script = SubResource( 144 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Portal"]
+frames = SubResource( 145 )
+
+[node name="Screen" type="Sprite" parent="Portal"]
+
+[node name="Viewport" type="Viewport" parent="Portal"]
+size = Vector2( 80, 80 )
+transparent_bg = true
+handle_input_locally = false
+debanding = true
+keep_3d_linear = true
+usage = 3
+gui_snap_controls_to_pixels = false
+shadow_atlas_quad_0 = 0
+shadow_atlas_quad_1 = 0
+shadow_atlas_quad_2 = 0
+shadow_atlas_quad_3 = 0
+
+[node name="CSGTorus" type="CSGTorus" parent="Portal/Viewport"]
+transform = Transform( 1, 1.74846e-07, -1.74846e-07, -1.74846e-07, 1, 1.74846e-07, 1.74846e-07, -1.74846e-07, 1, 0, 0, 0 )
+inner_radius = 1.0
+outer_radius = 2.0
+sides = 12
+ring_sides = 3
+material = SubResource( 146 )
+
+[node name="Camera" type="Camera" parent="Portal/Viewport"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0 )
+fov = 45.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Portal/Viewport"]
+autoplay = "rotate"
+anims/RESET = SubResource( 147 )
+anims/rotate = SubResource( 148 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+shape = SubResource( 149 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Portal"]
+stream = ExtResource( 33 )
+
+[node name="Label" type="Label" parent="Portal"]
+margin_left = -391.0
+margin_top = -48.0
+margin_right = -214.0
+margin_bottom = -34.0
+theme = ExtResource( 35 )
+text = "sonic got through act-1"
+
+[connection signal="body_entered" from="Tiles/Area2D" to="Tiles/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="Platform/Platform_1/Area2D" to="Platform/Platform_1/Area2D" method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Platform/Loop" to="Platform/Loop" method="_on_Loop_body_entered"]
+[connection signal="area_entered" from="Enemies/Area2D2" to="Enemies/Area2D2" method="_on_Area2D2_area_entered"]
+[connection signal="body_entered" from="Areas/Spikes" to="Areas/Spikes" method="_on_Spikes_body_entered"]
+[connection signal="body_entered" from="Areas/Area2D" to="Areas/Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Areas/Area2D" to="Areas/Area2D" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Areas/Area2D2" to="Areas/Area2D2" method="_on_Area2D2_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Portal" to="Portal" method="_on_Level1_body_entered"]
+[connection signal="animation_finished" from="Portal/AnimatedSprite" to="Portal" method="_on_AnimatedSprite_animation_finished"]
+
+[editable path="Objects/Motobug"]
+[editable path="Objects/Door"]
+[editable path="Objects/Spring"]
+[editable path="Platform/Platform3"]
+[editable path="Player"]
+[editable path="Enemies/Leon"]
+[editable path="Enemies/Buzz Bomber"]
+[editable path="Enemies/Buzz Bomber2"]
